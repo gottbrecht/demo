@@ -15,10 +15,10 @@ public class ChatRequest {
     private String model;
     private List<Message> messages = new ArrayList<>();
     private double temperature;
-    private int maxTokens;
-    private int topP;
-    private double frequencyPenalty;
-    private double presencePenalty;
+    private int max_tokens;
+    private double top_p;
+    private double frequency_penalty;
+    private double presence_penalty;
 
     @Getter
     @Setter
