@@ -1,11 +1,9 @@
 package dat3.demo.dto;
 
-import com.google.protobuf.Message;
 import lombok.Getter;
 import lombok.Setter;
-import org.jboss.jandex.TypeTarget;
 
-import java.awt.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,8 +12,8 @@ public class ChatResponse {
     private String object;
     private long created;
     private String model;
-    private List choices;
-    private TypeTarget.Usage usage;
+    private List<Choice> choices;
+    private Usage usage;
 
     @Getter
     @Setter

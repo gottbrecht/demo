@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class SongController {
 
     private OpenAiService openAiService;
-    final static String SYSTEM_MESSAGE = "You are an event maker, that knows how to generate songs and drinks recipes";
+    final static String SYSTEM_MESSAGE = "You are an event maker, that knows how to generate songs and entertain a crowd";
 
     public SongController(OpenAiService openAiService) {this.openAiService = openAiService; }
-/*
+
     @GetMapping
     public MyResponse getSong(@RequestParam String topic) {
+
         return openAiService.makeRequest(topic,SYSTEM_MESSAGE);
-    }*/
+    }
 }

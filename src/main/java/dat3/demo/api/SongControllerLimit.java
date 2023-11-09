@@ -1,12 +1,14 @@
 package dat3.demo.api;
 
-import com.sun.net.httpserver.HttpsServer;
 import dat3.demo.dto.MyResponse;
 import dat3.demo.service.OpenAiService;
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Refill;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 import java.util.Map;
@@ -37,9 +39,15 @@ public class SongControllerLimit {
     private Bucket getBucket(String key) {
         return buckets.computeIfAbsent(key, k -> createNewBucket());
     }
-}
-/*
+
     @GetMapping("/limit")
-    public MyResponse getSongLimit(RequestParam String topic, HttpsServletRequest request) {
-        String ip = request.
-*/
+    public MyResponse getSongLimit(@RequestParam String topic, HttpServletRequest request) {
+        String ip = request.getRemoteAddr();
+        Bucket bucket = getBucket(ip);
+        if (!bucket.tryConsume(1)) {
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Too many requests, try again later");
+        }
+        return openAiService.makeRequest(topic, SongController.SYSTEM_MESSAGE);
+    }
+}
+
