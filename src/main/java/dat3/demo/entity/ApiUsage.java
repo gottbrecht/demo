@@ -1,15 +1,13 @@
 package dat3.demo.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Access(AccessType.FIELD)
 public class ApiUsage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

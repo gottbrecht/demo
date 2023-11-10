@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class AssistInfoController {
 
-    private final String SYSTEM_MESSAGE="You are an event maker, that knows how to generate songs and entertain a crowd";
+    private final String SYSTEM_MESSAGE="You are an event maker, that knows how to generate songs and entertain a crowd.";
+
 
 OpenAiService openAiService;
 
