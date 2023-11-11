@@ -35,11 +35,16 @@ public class OpenAiService {
     @Value("${OPENAI_API_KEY}")
     private String API_KEY;
 
+    @Value("${OPENAI.url}")
+    private String URL;
+
+    @Value("${OPENAI.MODEL}")
+    private String MODEL;
+
+
     //See here for a decent explanation of the parameters send to the API via the requestBody
     //https://platform.openai.com/docs/api-reference/completions/create
 
-    public final static String URL = "https://api.openai.com/v1/chat/completions";
-    public final static String MODEL = "gpt-3.5-turbo";
     public final static double TEMPERATURE = 1;
     public final static int MAX_TOKENS = 256;
     public final static double TOP_P = 1.0;
@@ -57,7 +62,7 @@ public class OpenAiService {
         this.client = client;
     }
 
-    public MyResponse makeRequest(String userPrompt, String _systemMessage) {
+    public MyResponse makeRequest(String topic, String systemMessage) {
 
         ChatRequest requestDto = new ChatRequest();
         requestDto.setModel(MODEL);
@@ -66,8 +71,8 @@ public class OpenAiService {
         requestDto.setTop_p(TOP_P);
         requestDto.setFrequency_penalty(FREQUENCY_PENALTY);
         requestDto.setPresence_penalty(PRESENCE_PENALTY);
-        requestDto.getMessages().add(new ChatRequest.Message("system", _systemMessage));
-        requestDto.getMessages().add(new ChatRequest.Message("user", userPrompt));
+        requestDto.getMessages().add(new ChatRequest.Message("system", systemMessage));
+        requestDto.getMessages().add(new ChatRequest.Message("user", topic));
 
         ObjectMapper mapper = new ObjectMapper();
         String json = "";

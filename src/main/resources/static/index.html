@@ -4,35 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP4 Video Example</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Set the body height to fill the viewport */
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 1em;
+        }
+
+        .input-group input {
+            margin-bottom: 0; /* Remove margin bottom for the input field */
+        }
+
+        .input-group small {
+            display: block;
+            margin-top: 1em;
+            font-size: 0.75rem; /* Adjust font size as needed */
+        }
+    </style>
 </head>
 <body>
+
 <header>
     <h1>Robo:venture</h1>
 </header>
 
 <section>
-    <video autoplay controls width="1100px" height="600px">
+    <video autoplay controls width="1300px" height="505px">
         <source src="Humanoid(final).mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 </section>
 
 <section>
-    <p>Need inspiration for your next event?</p>
-    <ol>
-        <li>
-            <p>The song provider</p>
-            <div class="input-group">
-                <input type="text" id="topic" class="result" placeholder="Enter theme for a song">
-                <button class="btn btn-dark" id="btn-get-song">Click here</button>
-                <div id="spinner1" class="spinner-border text-success" role="status" style="margin-left:1em;border-radius: 50%;display:none;">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        </li>
-    </ol>
+    <div>
+        <div class="input-group">
+            <input type="text" id="topic" class="form-control" placeholder="Enter theme for Song">
+            <small class="text-muted">Try simple inputs like 'fish, 'popcorn', 'banana', etc..</small>
+            <button class="btn-grey" onclick="getSong()" id="btn-get-song" id="btn-get-song"
+                style="background-color: cadetblue; color: #fff;border: 1px solid #343a40; padding: 10px 20px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;"
+                onmouseover="this.style.backgroundColor='#555'" onmouseout="this.style.backgroundColor='#343a40'">Click
+                me to display Song</button>
+
+            <div id="songSpinner" class="spinner-border text-success" role="status"
+                  style="margin-left:1em;border-radius: 50%;display:none;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <p id="songResult" class="result"></p>
+  </div>
 </section>
+
+<script>
+    async function getSong() {
+        const topicInput = document.getElementById('topicInput').value.trim;
+        const songSpinner = document.getElementById('songSpinner');
+        const songResult = document.getElemenById('songResult');
+        songResult.style.color = 'black';
+
+        try {
+            songSpinner.style.display = 'block';
+            const apiUrl = '/api/song';
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({topic: topicInput}),
+            }).then(response => response.json());
+
+            songResult.innerText = 'Recommended Song:${response.answer}';
+            document.getElementById('topicInput').value = '';
+        } catch (e) {
+        // Update your UI with the response
+        songResult.style.color = 'red';
+        songResult.innerText = 'Error fetching song recommendation: ${e.message}';
+        } finally {
+            songSpinner.style.display = 'none';
+        }
+
+    }
+
+</script>
+
+
+<script src="./javascript.js"></script>
 </body>
 </html>

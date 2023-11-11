@@ -14,9 +14,8 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@RestController
 @RequestMapping("/api/song2")
-@CrossOrigin(origins = "http://youtube.com, http://google.com")
+@CrossOrigin(origins = "*")
 public class SongControllerLimit {
 
     private final int BUCKET_CAPACITY = 2;

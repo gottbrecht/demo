@@ -17,9 +17,8 @@ public class MyResponse {
     String answer;
     List<Map<String, String>> messages;
 
-    public MyResponse(String answer) {
-        this.answer = answer;
-    }
+    public MyResponse(String answer) {this.answer = answer;
+}
     public MyResponse(String answer, List<Map<String,String>> messages) {
         this.answer = answer;
         this.messages = messages;
