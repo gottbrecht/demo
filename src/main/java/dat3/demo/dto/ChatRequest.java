@@ -1,7 +1,5 @@
 package dat3.demo.dto;
 
-
-import com.google.protobuf.Message;
 import lombok.Getter;
 import lombok.Setter;
 

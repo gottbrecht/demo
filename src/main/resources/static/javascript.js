@@ -1,12 +1,13 @@
 const SERVER_URL = 'http://localhost:8080/api/';
 
 document.getElementById('btn-get-song').addEventListener('click', getSong);
-//document.getElementById('btn-get-joke2').addEventListener('click', getSongWithLimit);
+document.getElementById('btn-get-song2').addEventListener('click', getSongWithLimit);
 document.getElementById('btn-get-answer').addEventListener('click', getAssistInfo);
 
 
 async function getSong() {
-    const URL = `${SERVER_URL}song?about= + ${document.getElementById('about').value}`
+    console.log("du har klikket")
+    const URL = `${SERVER_URL}song?topic=${document.getElementById('topic').value}`
     const spinner = document.getElementById('spinner1');
     const result = document.getElementById('result');
     result.style.color = "black";
@@ -14,7 +15,7 @@ async function getSong() {
         spinner.style.display = "block";
         const response = await fetch(URL).then(handleHttpErrors)
         document.getElementById('result').innerText = response.answer;
-        //document.getElementById('about').value = ''
+        document.getElementById('topic').value = ''
     } catch (e) {
         result.style.color = "red";
         result.innerText = e.message;

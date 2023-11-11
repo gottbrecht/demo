@@ -8,25 +8,31 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<h1>Robo:venture</h1>
-<p><video autoplay controls>
-<source src="Humanoid(final).mp4" type="video/mp4">
-<video id="humanoid_video" class="video"
-       width="1100px" height="300px">
-</p>
-<p>Need inspiration for your next event?</p>
-<ol>
-    <li>
-        <p>The song provider</p>
-        <div class="input-group">
-            <input type="text" id="about" class="result" placeholder="Enter theme for a song">
-            <button class="btn btn-dark" id="btn-get-song">Click here</button>
-            <div id="spinner1" class="spinner-border text-success" role="status"
-                 style="margin-left:1em;border-radius: 50%;display:none;">
-                <span class="visually-hidden">Loading...</span>
+<header>
+    <h1>Robo:venture</h1>
+</header>
+
+<section>
+    <video autoplay controls width="1100px" height="600px">
+        <source src="Humanoid(final).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+<section>
+    <p>Need inspiration for your next event?</p>
+    <ol>
+        <li>
+            <p>The song provider</p>
+            <div class="input-group">
+                <input type="text" id="topic" class="result" placeholder="Enter theme for a song">
+                <button class="btn btn-dark" id="btn-get-song">Click here</button>
+                <div id="spinner1" class="spinner-border text-success" role="status" style="margin-left:1em;border-radius: 50%;display:none;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
-        </div>
-    </li>
-    <li>
+        </li>
+    </ol>
+</section>
 </body>
 </html>
