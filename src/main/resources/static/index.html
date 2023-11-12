@@ -53,12 +53,15 @@
     <div class="input-group">
 
         <input type="text" id="topicInput" class="form-control" placeholder="Enter theme for a Song">
-        <small class="text-muted">Try simple input, like: fish, popcorn, banana, etc..</small>
+        <!--<small class="text-muted">Try simple input, like: fish, popcorn, banana, etc..</small>-->
         <button class="btn-grey" onclick="getSong()" id="btn-get-song"
                 style="background-color: cadetblue; color: #fff;border: 1px solid #343a40; padding: 10px 20px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;"
                 onmouseover="this.style.backgroundColor='#555'" onmouseout="this.style.backgroundColor='#343a40'">
             Click me to display Song
         </button>
+        <!-- Add this line -->
+        <p id="counter" style="color: black; font-size: 20px; margin-top: 1em;"></p>
+
         <div id="songSpinner" class="spinner-border text-success" role="status"
              style="margin-left:1em;border-radius: 50%;display:none;">
             <span class="visually-hidden">Loading...</span>
@@ -66,7 +69,7 @@
     </div>
     <p id="songOutput" class="result"></p>
 </section>
-
+<!--
 <script>
     async function getSong() {
         const topicInput = document.getElementById('topicInput').value.trim();
@@ -99,7 +102,7 @@
     }
 
 </script>
-
+-->
 <script src="./javascript.js"></script>
 </body>
 
