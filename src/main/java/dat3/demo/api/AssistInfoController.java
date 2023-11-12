@@ -5,7 +5,8 @@ import dat3.demo.dto.MyResponse;
 import dat3.demo.service.OpenAiService;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/song")
+@RestController
+@RequestMapping("/api/assistant")
 @CrossOrigin(origins = "*")
 public class AssistInfoController {
 
