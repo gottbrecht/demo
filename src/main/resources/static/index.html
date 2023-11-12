@@ -69,40 +69,7 @@
     </div>
     <p id="songOutput" class="result"></p>
 </section>
-<!--
-<script>
-    async function getSong() {
-        const topicInput = document.getElementById('topicInput').value.trim();
-        const songSpinner = document.getElementById('songSpinner');
-        const songOutput = document.getElementById('songOutput');
-        songOutput.style.color = 'black';
 
-        try {
-            songSpinner.style.display = 'block';
-            const apiUrl = '/api/song';
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({topic: topicInput}),
-            }).then(response => response.json());
-
-            songOutput.innerText = `Recommended Song: ${response.answer}`;
-            document.getElementById('topicInput').value = '';
-        } catch (e) {
-            // Update your UI with the response
-            songOutput.style.color = 'red';
-            songOutput.innerText = `Error fetching song recommendation: ${e.message}`;
-        } finally {
-            songSpinner.style.display = 'none';
-        }
-
-    }
-
-</script>
--->
 <script src="./javascript.js"></script>
 </body>
 
