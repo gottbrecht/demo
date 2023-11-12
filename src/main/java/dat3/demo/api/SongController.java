@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 public class SongController {
 
     private final OpenAiService openAiService;
-    final static String SYSTEM_MESSAGE = "You are an event maker, that knows how to generate songs and entertain a crowd."
-            +"When asked about drinks";
+    final static String SYSTEM_MESSAGE = "You are an event maker, that knows how to generate songs and entertain a crowd."+
+            " The user is a Computer Science Student";
 
     @Autowired
     public SongController(OpenAiService openAiService) {this.openAiService = openAiService; }

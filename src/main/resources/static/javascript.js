@@ -1,8 +1,10 @@
 const SERVER_URL = 'http://localhost:8080/api';
 
 document.getElementById('btn-get-song').addEventListener('click', getSong);
-async function getSong() {
+async function getSong(event) {
+    event.preventDefault();
     const topicInput = document.getElementById('topicInput').value.trim();
+    console.log('Topic Input:', topicInput);
     const songSpinner = document.getElementById('songSpinner');
     const songResult = document.getElementById('songResult');
     songResult.style.color = 'black';

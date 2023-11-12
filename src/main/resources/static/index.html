@@ -49,13 +49,18 @@
 <section>
     <div>
         <div class="input-group">
-            <input type="text" id="topic" class="form-control" placeholder="Enter theme for Song">
-            <small class="text-muted">Try simple inputs like 'fish, 'popcorn', 'banana', etc..</small>
-            <button class="btn-grey" onclick="getSong()" id="btn-get-song" id="btn-get-song"
-                style="background-color: cadetblue; color: #fff;border: 1px solid #343a40; padding: 10px 20px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;"
+            <input type="text" id="topicInput" class="form-control" placeholder="Enter theme for Song">
+           <!-- <small class="text-muted">Try simple inputs like 'fish, 'popcorn', 'banana', etc..</small>-->
+            <button class="btn-grey" onclick="getSong()" id="btn-get-song" style="background-color: cadetblue; color: #fff;border: 1px solid #343a40; padding: 10px 20px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;"
                 onmouseover="this.style.backgroundColor='#555'" onmouseout="this.style.backgroundColor='#343a40'">Click
-                me to display Song</button>
-
+                me to display Song
+            </button>
+            <div>
+                Demonstrates how to feed own info into the API-request
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#owninfoModal">
+                    How to test this example!
+                </button>
+            </div>
             <div id="songSpinner" class="spinner-border text-success" role="status"
                   style="margin-left:1em;border-radius: 50%;display:none;">
             <span class="visually-hidden">Loading...</span>
