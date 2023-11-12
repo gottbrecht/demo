@@ -14,7 +14,6 @@ public class SongController {
     final static String SYSTEM_MESSAGE = "You are an event maker, that knows how to generate songs and entertain a crowd."+
             " The user is a Computer Science Student";
 
-    @Autowired
     public SongController(OpenAiService openAiService) {this.openAiService = openAiService; }
 
     @PostMapping
